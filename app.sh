@@ -4,7 +4,7 @@ function usage()
    echo "Usage: app <appname> <command>"
    echo -e ""
    echo -e "Options:"
-   echo -e "  appname    Must exist in directory ./nimbus-dockerapp/ and end with .dockerapp"
+   echo -e "  appname    Must exist in directory ../nimbus-dockerapp/ and end with .dockerapp"
    echo -e ""
    echo -e "Commands:"
    echo -e "  down     Stop and remove containers"
@@ -18,8 +18,9 @@ function usage()
    echo -e "  up       Creates and start containers"
 }
 
-if [ "$#" -ne 2 ]; then
+if [ "$#" -ne 2 ] 
+then
   usage()
 else
-  docker-app render "./nimbus-dockerapp/$1.dockerapp" | docker-compose -p ${filename%.*} -f - $2
+  docker-app render "../nimbus-dockerapp/$1.dockerapp" | docker-compose -p ${filename%.*} -f - $2
 fi
